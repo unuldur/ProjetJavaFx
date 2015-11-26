@@ -1,4 +1,4 @@
-package sample;
+package Vue;
 
 public class Controller {
 }
