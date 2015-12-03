@@ -3,7 +3,6 @@ package Test;
 import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
 import Metier.Item.CreateurItem;
-import Metier.Item.Item;
 import Metier.Monstre.CreateurMonstre;
 import Metier.Tile.CreateurTiles;
 
