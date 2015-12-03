@@ -1,0 +1,5 @@
+Fait le 03/12 - 8h - Maxime
+
+->packages pour Monstre, Entite et Item
+->creation d'itemVisuel, monstreVisuel et tileVisuel
+->besoin entiteVisuel?

@@ -1,4 +1,7 @@
-package Metier;
+package Metier.Monstre;
+
+import Metier.Entite.CreateurEntite;
+import Metier.Entite.Entite;
 
 /**
  * Created by PAYS on 26/11/2015.

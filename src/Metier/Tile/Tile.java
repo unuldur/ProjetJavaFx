@@ -1,5 +1,6 @@
-package Metier;
+package Metier.Tile;
 
+import Metier.Entite.Entite;
 import com.sun.javafx.geom.Point2D;
 import javafx.beans.property.StringProperty;
 
@@ -29,8 +30,8 @@ public class Tile extends Entite {
         this.type = type;
     }
 
-    public Tile(StringProperty name, StringProperty sprite, Point2D position, enumTile type) {
-        super(name, sprite, position);
+    public Tile(StringProperty name, Point2D position, enumTile type) {
+        super(name, position);
         this.type = type;
     }
 }

@@ -1,4 +1,4 @@
-package Metier;
+package Metier.Entite;
 
 import com.sun.javafx.geom.Point2D;
 import javafx.beans.InvalidationListener;
@@ -24,6 +24,8 @@ public abstract class Entite {
     /**
      * @param sprite chemin vers le sprite de l'entité;
      */
+
+    /** SERA IMPLEMENTE DANS LES CLASSES VISUELLES
     private StringProperty sprite = new SimpleStringProperty();
 
     public void setSprite(String sprite) {
@@ -38,6 +40,8 @@ public abstract class Entite {
         return sprite;
     }
 
+    */
+
     /**
      * @param position  position de l'entité
      */
@@ -51,9 +55,9 @@ public abstract class Entite {
         this.position = position;
     }
 
-    public Entite(StringProperty name, StringProperty sprite, Point2D position) {
+    public Entite(StringProperty name, Point2D position) {
         this.name = name;
-        this.sprite = sprite;
+        //this.sprite = sprite;
         this.position = position;
     }
 }

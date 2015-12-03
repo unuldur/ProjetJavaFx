@@ -1,4 +1,4 @@
-package Metier;
+package Metier.Entite;
 
 /**
  * Created by PAYS on 26/11/2015.

@@ -1,5 +1,6 @@
-package Metier;
+package Metier.Monstre;
 
+import Metier.Entite.Entite;
 import com.sun.javafx.geom.Point2D;
 import javafx.beans.property.StringProperty;
 
@@ -23,8 +24,8 @@ public class Monstre extends Entite {
         this.categorie = categorie;
     }
 
-    public Monstre(StringProperty name, StringProperty sprite, Point2D position, Categorie categorie) {
-        super(name, sprite, position);
+    public Monstre(StringProperty name, Point2D position, Categorie categorie) {
+        super(name, position);
         this.categorie = categorie;
     }
 }
