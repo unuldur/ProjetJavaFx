@@ -1,7 +1,7 @@
 package Metier.Monstre;
 
 import Metier.Entite.Entite;
-import com.sun.javafx.geom.Point2D;
+import javafx.geometry.Point2D;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -27,6 +27,12 @@ public class Monstre extends Entite {
     public Monstre(StringProperty name, Point2D position, Categorie categorie) {
         super(name, position);
         this.categorie = categorie;
+    }
+
+    public Monstre(Monstre m)
+    {
+        super(m);
+        this.categorie= m.getCategorie();
     }
 
     @Override

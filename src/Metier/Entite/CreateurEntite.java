@@ -13,5 +13,5 @@ public abstract class CreateurEntite {
     }
 
     public abstract Entite fabriqueEntite();
-
+    public abstract Entite fabriqueEntite(Entite e);
 }
