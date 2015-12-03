@@ -11,4 +11,9 @@ public class Item extends Entite {
     public Item(StringProperty name, Point2D position) {
         super(name, position);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

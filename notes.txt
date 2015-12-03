@@ -3,3 +3,16 @@ Fait le 03/12 - 8h - Maxime
 ->packages pour Monstre, Entite et Item
 ->creation d'itemVisuel, monstreVisuel et tileVisuel
 ->besoin entiteVisuel?
+
+http://design-patterns.fr/fabrique-en-java : lien utile pour fabriques
+
+
+IMPLEMENTATION FABRIQUES
+
+->CreateurEntite : pas de paramètres, idem pour les 3 autres
+->Appel des différentes fabriques par la fenêtre via binding
+->PAS d'appel du CreateurEntite
+
+->Dans notre fenetre, nous devrons avoir un bouton modifier pour permettre de changer les parametres de nos entités. (Les createurs renvoient des Entite par défaut)
+
+->Classe test appelant les toString des Tiles, Monstres et Items, montre que les différents Createurs fonctionnent (sol par défaut pour tile, normal par défaut pour Monstre, etc)

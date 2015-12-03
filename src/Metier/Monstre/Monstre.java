@@ -28,4 +28,9 @@ public class Monstre extends Entite {
         super(name, position);
         this.categorie = categorie;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+categorie.toString();
+    }
 }

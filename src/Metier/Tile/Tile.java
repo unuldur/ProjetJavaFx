@@ -34,4 +34,9 @@ public class Tile extends Entite {
         super(name, position);
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+type.toString();
+    }
 }
