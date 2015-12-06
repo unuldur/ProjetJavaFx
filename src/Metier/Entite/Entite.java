@@ -1,11 +1,8 @@
 package Metier.Entite;
 
-import com.sun.javafx.geom.Point2D;
-import javafx.beans.InvalidationListener;
+import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 /**
  * Created by PAYS on 26/11/2015.
@@ -45,7 +42,7 @@ public abstract class Entite {
     /**
      * @param position  position de l'entité
      */
-    private Point2D position = new Point2D();
+    private Point2D position = new Point2D(0,0);
 
     public Point2D getPosition() {
         return position;
@@ -59,5 +56,15 @@ public abstract class Entite {
         this.name = name;
         //this.sprite = sprite;
         this.position = position;
+    }
+
+    public Entite(Entite e) {
+        this.name = e.name;
+        this.position = e.position;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().toString()+" "+getPosition().toString();
     }
 }

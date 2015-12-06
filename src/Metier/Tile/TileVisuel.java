@@ -1,6 +1,6 @@
 package Metier.Tile;
 
-import com.sun.javafx.geom.Point2D;
+import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

@@ -1,7 +1,7 @@
 package Metier.Tile;
 
 import Metier.Entite.Entite;
-import com.sun.javafx.geom.Point2D;
+import javafx.geometry.Point2D;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -33,6 +33,11 @@ public class Tile extends Entite {
     public Tile(StringProperty name, Point2D position, enumTile type) {
         super(name, position);
         this.type = type;
+    }
+    public Tile(Tile t)
+    {
+        super(t);
+        this.type = t.type;
     }
 
     @Override
