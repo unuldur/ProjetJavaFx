@@ -10,13 +10,6 @@ import javafx.beans.property.StringProperty;
 public class Tile extends Entite {
 
 
-    public enum enumTile
-    {
-        Sol,
-        Vide,
-        Mur,
-        Porte
-    }
 
     /**
      * @param type le type de la tile

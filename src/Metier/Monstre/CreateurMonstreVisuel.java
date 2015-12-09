@@ -11,6 +11,6 @@ import javafx.beans.property.SimpleStringProperty;
 public class CreateurMonstreVisuel extends CreateurMonstre {
     @Override
     public Entite fabriqueEntite() {
-        return new MonstreVisuel(new SimpleStringProperty(),new Point2D(0,0), Monstre.Categorie.Normal,new SimpleStringProperty());
+        return new MonstreVisuel(new SimpleStringProperty(),new Point2D(0,0), Categorie.Normal,new SimpleStringProperty());
     }
 }

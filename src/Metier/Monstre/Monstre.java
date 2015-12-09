@@ -9,12 +9,6 @@ import javafx.beans.property.StringProperty;
  */
 public class Monstre extends Entite {
 
-    public enum Categorie
-    {
-        Normal,
-        Boss // Un seul par niveau
-    }
-
     private Categorie categorie;
     public Categorie getCategorie() {
         return categorie;

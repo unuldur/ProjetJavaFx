@@ -17,3 +17,8 @@ IMPLEMENTATION FABRIQUES
 ->TODO : implémentation de la fabrique (et de tout en fait) dans la fenêtre
 ->TODO : Ajouter autres pattern, memento OU commande pour undo/redo? (le memento ne permet pas, ou non optimisé, de faire undo/redo mais seulement undo. Commande oblige le stockage de chaque opération, sauf si l'on met une limite)
 ->TODO : dépôt du projet sur ENT
+
+
+09/12 - 10h - Maxime
+
+->TODO : Patron Memento, Visiteur & Stratégie

@@ -11,6 +11,6 @@ public class CreateurTileVisuel extends CreateurTiles{
 
     @Override
     public Entite fabriqueEntite() {
-        return new TileVisuel(new SimpleStringProperty(), new Point2D(0,0), Tile.enumTile.Sol,new SimpleStringProperty());
+        return new TileVisuel(new SimpleStringProperty(), new Point2D(0,0), enumTile.Sol,new SimpleStringProperty());
     }
 }
