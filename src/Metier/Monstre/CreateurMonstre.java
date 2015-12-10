@@ -2,7 +2,7 @@ package Metier.Monstre;
 
 import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
-import Metier.Item.Item;
+import Metier.Monstre.Categorie;
 import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 

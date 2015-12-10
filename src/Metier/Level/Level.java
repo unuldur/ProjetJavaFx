@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by PAYS on 03/12/2015.
  */
+
 public class Level {
     ArrayList<Entite> listEntite = new ArrayList<>();
 

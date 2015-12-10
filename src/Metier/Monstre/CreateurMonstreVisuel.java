@@ -1,8 +1,8 @@
 package Metier.Monstre;
 
 import Metier.Entite.Entite;
+import Metier.Monstre.Categorie;
 import javafx.geometry.Point2D;
-import com.sun.xml.internal.ws.server.MonitorBase;
 import javafx.beans.property.SimpleStringProperty;
 
 /**

@@ -16,9 +16,20 @@ IMPLEMENTATION FABRIQUES
 ->TODO : Dans notre fenetre, nous devrons avoir un bouton modifier pour permettre de changer les parametres de nos entités. (Les createurs renvoient des Entite par défaut)
 ->TODO : implémentation de la fabrique (et de tout en fait) dans la fenêtre
 ->TODO : Ajouter autres pattern, memento OU commande pour undo/redo? (le memento ne permet pas, ou non optimisé, de faire undo/redo mais seulement undo. Commande oblige le stockage de chaque opération, sauf si l'on met une limite)
-->TODO : dépôt du projet sur ENT
+
+->URGENT /!\ TODO : dépôt du projet sur ENT
 
 
 09/12 - 10h - Maxime
 
 ->TODO : Patron Memento, Visiteur & Stratégie
+->Strategie : Placement, nombre entite/niveau
+
+10/12 - 8h - Maxime
+
+
+Methode/Interface pour placement dans niveau :
+
+    Interface IPlacementEntite : méthode de placement avec en paramètre la position
+    3 classes : PlacementMonsttre, PlacementItem, PlacementTile, implémentant IPlacementEntite. PlacementMonstre -> vérif qu'il n'y a pas déja un boss, que 2 monstres ne se chevauchent pas. PlacementTile -> vérifie qu'il n'y a pas 2 portes, que 2 items ne se chevauchent pas. PlacementItem -> vérifie que 2 items ne se chevauchent pas
+    Classe Context : A un attribut IPlacementEntite, une méthode pour appeler la méthode de la stratégie

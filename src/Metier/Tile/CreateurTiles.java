@@ -2,7 +2,7 @@ package Metier.Tile;
 
 import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
-import Metier.Item.Item;
+import Metier.Tile.enumTile;
 import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 

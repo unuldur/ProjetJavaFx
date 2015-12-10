@@ -13,6 +13,7 @@ import javafx.geometry.Point2D;
 /**
  * Created by maxime on 12/03/2015.
  */
+
 public class test {
 
     public static void main(String args[]) {
@@ -35,9 +36,11 @@ public class test {
 
         level.addEntite(ct.fabriqueEntite(et),new Point2D(12,16));
 
-
-        System.out.println(em.getClass().getName());
+        System.out.println(em.getClass().getName()+"\n");
         System.out.println(level.getListEntiteSpe(Type.Monstre));
+        System.out.println("\n"+et.getClass().getName()+"\n");
         System.out.println(level.getListEntiteSpe(Type.Tile));
+        System.out.println("\n"+ei.getClass().getName()+"\n");
+        System.out.println(level.getListEntiteSpe(Type.Item));
     }
 }
