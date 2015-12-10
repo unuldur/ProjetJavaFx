@@ -13,7 +13,7 @@ public class CreateurTiles extends CreateurEntite {
 
     @Override
     public Entite fabriqueEntite() {
-        return new Tile(new SimpleStringProperty(), new Point2D(0,0), enumTile.Sol); //par défaut, la tile sera un sol
+        return new Tile(new SimpleStringProperty(), new Point2D(0,0), enumTile.Sol,new SimpleStringProperty()); //par défaut, la tile sera un sol
     }
 
     @Override

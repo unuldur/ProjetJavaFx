@@ -28,7 +28,7 @@ public class Level {
     }
 
     public boolean isOk(Entite e) { //isOk va servir à appeler isOkRule, après avoir déterminer quel regle utiliser
-        String s = e.getClass().getName(); //A modifier
+        String s = e.getClass().getName();
         switch (s)
         {
             case "Metier.Monstre.Monstre":
@@ -44,11 +44,13 @@ public class Level {
 
     private boolean isOkRule(RuleEntite re) //Monstre, Item et Level auront chacun une regle
     {
-        return true;
+        return true; //A modifier, ajouter les rules dans RuleMonstre/Item/Tile et faire les vérifs.
     }
 
-    public ArrayList<Entite> getListEntiteSpe(Type t)
+    public ArrayList<Entite> getListEntite()
     {
+        return listEntite;
+        /*
         ArrayList<Entite> entites = new ArrayList<>();
         switch (t)
         {
@@ -72,5 +74,6 @@ public class Level {
                 break;
         }
         return entites;
+        */
     }
 }

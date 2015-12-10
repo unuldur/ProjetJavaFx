@@ -1,5 +1,6 @@
 package Metier.Entite;
 
+import Metier.Visiteur.Visiteur;
 import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -22,7 +23,6 @@ public abstract class Entite {
      * @param sprite chemin vers le sprite de l'entité;
      */
 
-    /** SERA IMPLEMENTE DANS LES CLASSES VISUELLES
     private StringProperty sprite = new SimpleStringProperty();
 
     public void setSprite(String sprite) {
@@ -37,8 +37,6 @@ public abstract class Entite {
         return sprite;
     }
 
-    */
-
     /**
      * @param position  position de l'entité
      */
@@ -52,9 +50,9 @@ public abstract class Entite {
         this.position = position;
     }
 
-    public Entite(StringProperty name, Point2D position) {
+    public Entite(StringProperty name, Point2D position,StringProperty sprite) {
         this.name = name;
-        //this.sprite = sprite;
+        this.sprite = sprite;
         this.position = position;
     }
 
@@ -63,7 +61,10 @@ public abstract class Entite {
     public Entite(Entite e) {
         this.name = e.name;
         this.position = e.position;
+        this.sprite = e.sprite;
     }
+
+    public abstract void accept(Visiteur v);
 
     @Override
     public String toString() {

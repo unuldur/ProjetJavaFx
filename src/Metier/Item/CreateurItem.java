@@ -12,7 +12,7 @@ public class CreateurItem extends CreateurEntite {
 
     @Override
     public Entite fabriqueEntite() {
-        return new Item(new SimpleStringProperty(), new Point2D(0,0));
+        return new Item(new SimpleStringProperty(), new Point2D(0,0),new SimpleStringProperty());
     }
 
     @Override

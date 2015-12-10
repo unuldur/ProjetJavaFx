@@ -3,11 +3,10 @@ package Test;
 import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
 import Metier.Item.CreateurItem;
-import Metier.Item.Item;
 import Metier.Level.Level;
+import Metier.Level.LevelCanvas;
 import Metier.Monstre.CreateurMonstre;
 import Metier.Tile.CreateurTiles;
-import Metier.Type;
 import javafx.geometry.Point2D;
 
 /**
@@ -21,7 +20,7 @@ public class test {
         CreateurEntite cm = new CreateurMonstre();
         CreateurEntite ct = new CreateurTiles();
         Level level = new Level();
-
+        LevelCanvas levelCanvas = new LevelCanvas(level);
         Entite ei = ci.fabriqueEntite();
         Entite em = cm.fabriqueEntite();
         Entite et = ct.fabriqueEntite();
@@ -36,11 +35,6 @@ public class test {
 
         level.addEntite(ct.fabriqueEntite(et),new Point2D(12,16));
 
-        System.out.println(em.getClass().getName()+"\n");
-        System.out.println(level.getListEntiteSpe(Type.Monstre));
-        System.out.println("\n"+et.getClass().getName()+"\n");
-        System.out.println(level.getListEntiteSpe(Type.Tile));
-        System.out.println("\n"+ei.getClass().getName()+"\n");
-        System.out.println(level.getListEntiteSpe(Type.Item));
+        levelCanvas.draw();
     }
 }

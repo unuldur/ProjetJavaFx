@@ -13,7 +13,7 @@ public class CreateurMonstre extends CreateurEntite {
 
     @Override
     public Entite fabriqueEntite() {
-        return new Monstre(new SimpleStringProperty(), new Point2D(0,0), Categorie.Normal); //Par défaut, notre monstre sera un monstre normal
+        return new Monstre(new SimpleStringProperty(), new Point2D(0,0), Categorie.Normal,new SimpleStringProperty()); //Par défaut, notre monstre sera un monstre normal
     }
 
     @Override
