@@ -1,5 +1,9 @@
 package Metier.Level;
 
+import Metier.Entite.RuleEntite;
+import Metier.Item.RuleItem;
+import Metier.Monstre.RuleMonstre;
+import Metier.Tile.RuleTile;
 import Metier.Type;
 import Metier.Entite.Entite;
 import javafx.geometry.Point2D;
@@ -16,8 +20,31 @@ public class Level {
 
     public void addEntite(Entite e, Point2D p)
     {
-        e.setPosition(p);
-        listEntite.add(e);
+        if(isOk(e)) {
+            e.setPosition(p);
+            listEntite.add(e);
+        }
+        else System.out.println("Erreur à l'ajout. Vérifiez les arguments de votre entité.");
+    }
+
+    public boolean isOk(Entite e) { //isOk va servir à appeler isOkRule, après avoir déterminer quel regle utiliser
+        String s = e.getClass().getName(); //A modifier
+        switch (s)
+        {
+            case "Metier.Monstre.Monstre":
+                return isOkRule(new RuleMonstre(e));
+            case "Metier.Item.Item":
+                return isOkRule(new RuleItem(e));
+            case "Metier.Tile.Tile":
+                return isOkRule(new RuleTile(e));
+        }
+        return false;
+    }
+
+
+    private boolean isOkRule(RuleEntite re) //Monstre, Item et Level auront chacun une regle
+    {
+        return true;
     }
 
     public ArrayList<Entite> getListEntiteSpe(Type t)

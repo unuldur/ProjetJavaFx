@@ -58,6 +58,8 @@ public abstract class Entite {
         this.position = position;
     }
 
+
+
     public Entite(Entite e) {
         this.name = e.name;
         this.position = e.position;
