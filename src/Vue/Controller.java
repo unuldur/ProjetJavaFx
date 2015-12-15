@@ -54,7 +54,6 @@ public class Controller {
         levelCanvas.heightProperty().bind(PaneAffichage.heightProperty());
         levelCanvas.widthProperty().bind(PaneAffichage.widthProperty());
 
-        loadTreeItems("coucou","encore un coucou","salut");
     }
 
     public void loadTreeItems(Monstre m) {

@@ -27,6 +27,12 @@ public class Level {
         else System.out.println("Erreur à l'ajout. Vérifiez les arguments de votre entité.");
     }
 
+    public void delEntite(Entite e)
+    {
+        if(!listEntite.remove(e))
+            System.err.println("Erreur lors de la suppression : entité absente du niveau. Veuillez revérifier vos arguments.");
+    }
+
     public boolean isOk(Entite e) { //isOk va servir à appeler isOkRule, après avoir déterminer quel regle utiliser
         String s = e.getClass().getName();
         switch (s)
