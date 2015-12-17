@@ -20,6 +20,7 @@ public class Level {
 
     public void addEntite(Entite e, Point2D p)
     {
+        e.setPosition(p); //???????
         if(isOk(e)) {
             e.setPosition(p);
             listEntite.add(e);
@@ -34,23 +35,25 @@ public class Level {
     }
 
     public boolean isOk(Entite e) { //isOk va servir à appeler isOkRule, après avoir déterminer quel regle utiliser
-        String s = e.getClass().getName();
+       String s = e.getClass().getName();
         switch (s)
         {
             case "Metier.Monstre.Monstre":
-                return isOkRule(new RuleMonstre(e));
+                return isOkRule(new RuleMonstre(), e);
             case "Metier.Item.Item":
-                return isOkRule(new RuleItem(e));
+                return isOkRule(new RuleItem(), e);
             case "Metier.Tile.Tile":
-                return isOkRule(new RuleTile(e));
+                return isOkRule(new RuleTile(), e);
         }
         return false;
     }
 
 
-    private boolean isOkRule(RuleEntite re) //Monstre, Item et Level auront chacun une regle
+    private boolean isOkRule(RuleEntite re, Entite e) //Monstre, Item et Level auront chacun une regle
     {
-        return true; //A modifier, ajouter les rules dans RuleMonstre/Item/Tile et faire les vérifs.
+        if(re.validerEntite(e, this))
+            return true;
+        else return false;
     }
 
     public ArrayList<Entite> getListEntite()
@@ -81,5 +84,13 @@ public class Level {
         }
         return entites;
         */
+    }
+
+    @Override
+    public String toString() {
+        String str="Détail du niveau : \n";
+        for(Entite e : listEntite)
+            str+="Nom : "+e.getName()+" --- Type : "+e.getClass().getName()+" --- Position x : "+e.getPosition().getX()+" --- Position y : "+e.getPosition().getY()+"\n";
+        return str;
     }
 }

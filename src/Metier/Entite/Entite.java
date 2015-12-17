@@ -46,8 +46,20 @@ public abstract class Entite {
         return position;
     }
 
-    public void setPosition(Point2D position) {
-        this.position = position;
+    public void setPosition(Point2D position) { //avoir une image tous les 20pixel, BUG : toutes les positions sont à 0,0 TODO
+        /*
+        double x, y;
+        int i;
+
+        x=(position.getX()+1)/20;
+        i=(int) x;
+        x=i*20;
+
+        y=(position.getY()+1)/20;
+        i=(int) y;
+        y=i*20;
+        */
+        this.position=position;
     }
 
     public Entite(StringProperty name, Point2D position,StringProperty sprite) {
@@ -55,8 +67,6 @@ public abstract class Entite {
         this.sprite = sprite;
         this.position = position;
     }
-
-
 
     public Entite(Entite e) {
         this.name = e.name;
