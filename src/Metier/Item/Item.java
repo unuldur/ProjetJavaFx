@@ -1,5 +1,6 @@
 package Metier.Item;
 
+        import Metier.Entite.CategorieEntite;
         import Metier.Entite.Entite;
         import Metier.Visiteur.Visiteur;
         import javafx.beans.property.StringProperty;
@@ -9,8 +10,8 @@ package Metier.Item;
  * Created by PAYS on 26/11/2015.
  */
 public class Item extends Entite {
-    public Item(StringProperty name, Point2D position,StringProperty sprite) {
-        super(name, position,sprite);
+    public Item(String name, Point2D position,String sprite,CategorieEntite i) {
+        super(name, position,sprite,i);
     }
 
     @Override

@@ -62,16 +62,29 @@ public abstract class Entite {
         this.position=position;
     }
 
-    public Entite(StringProperty name, Point2D position,StringProperty sprite) {
-        this.name = name;
-        this.sprite = sprite;
+    private CategorieEntite categorie;
+
+    public CategorieEntite getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(CategorieEntite categorie) {
+        this.categorie = categorie;
+    }
+
+
+    public Entite(String name, Point2D position,String sprite,CategorieEntite cat) {
+        setName(name);
+        setSprite(sprite);
         this.position = position;
+        this.categorie = cat;
     }
 
     public Entite(Entite e) {
         this.name = e.name;
         this.position = e.position;
         this.sprite = e.sprite;
+        this.categorie = e.getCategorie();
     }
 
     public abstract void accept(Visiteur v);

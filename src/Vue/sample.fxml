@@ -26,7 +26,7 @@
           <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TreeView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="133.0" GridPane.rowIndex="1" fx:id="treeView"/>
+            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="133.0" GridPane.rowIndex="1" fx:id="PanetreeView"/>
             <TextField text="Recherche" />
             <ComboBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.rowIndex="2" />
          </children>

@@ -59,38 +59,13 @@ public class Level {
     public ArrayList<Entite> getListEntite()
     {
         return listEntite;
-        /*
-        ArrayList<Entite> entites = new ArrayList<>();
-        switch (t)
-        {
-            case Item:
-                for (Entite entite:listEntite) {
-                    if(entite.getClass().getName() == "Metier.Item.Item")
-                        entites.add(entite);
-                }
-                break;
-            case Monstre:
-                for (Entite entite:listEntite) {
-                    if(entite.getClass().getName() == "Metier.Monstre.Monstre")
-                        entites.add(entite);
-                }
-                break;
-            case Tile:
-                for (Entite entite:listEntite) {
-                    if(entite.getClass().getName() == "Metier.Tile.Tile")
-                        entites.add(entite);
-                }
-                break;
-        }
-        return entites;
-        */
     }
 
     @Override
     public String toString() {
         String str="Détail du niveau : \n";
         for(Entite e : listEntite)
-            str+="Nom : "+e.getName()+" --- Type : "+e.getClass().getName()+" --- Position x : "+e.getPosition().getX()+" --- Position y : "+e.getPosition().getY()+"\n";
+            str+="Nom : "+e.getName()+" --- Type : "+e.getClass().getName()+" --- Position x : "+e.getPosition().getX()+" --- Position y : "+e.getPosition().getY()+"  --Categorie : "+e.getCategorie().getCategorie()+"\n";
         return str;
     }
 }

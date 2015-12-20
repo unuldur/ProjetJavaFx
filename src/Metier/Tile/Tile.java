@@ -1,5 +1,6 @@
 package Metier.Tile;
 
+import Metier.Entite.CategorieEntite;
 import Metier.Entite.Entite;
 import Metier.Visiteur.Visiteur;
 import javafx.geometry.Point2D;
@@ -11,27 +12,12 @@ import javafx.beans.property.StringProperty;
 public class Tile extends Entite {
 
 
-
-    /**
-     * @param type le type de la tile
-     */
-    private enumTile type;
-    public enumTile getType() {
-        return type;
-    }
-
-    public void setType(enumTile type) {
-        this.type = type;
-    }
-
-    public Tile(StringProperty name, Point2D position, enumTile type,StringProperty sprite) {
-        super(name, position,sprite);
-        this.type = type;
+    public Tile(String name, Point2D position,String sprite,CategorieEntite t) {
+        super(name, position,sprite,t);
     }
     public Tile(Tile t)
     {
         super(t);
-        this.type = t.type;
     }
 
     @Override
@@ -41,6 +27,6 @@ public class Tile extends Entite {
 
     @Override
     public String toString() {
-        return super.toString()+type.toString();
+        return super.toString()+getCategorie().getCategorie();
     }
 }
