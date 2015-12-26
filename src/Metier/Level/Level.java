@@ -65,6 +65,7 @@ public class Level {
     public String toString() {
         String str="Détail du niveau : \n";
         for(Entite e : listEntite)
+            if(e.getCategorie() != null)
             str+="Nom : "+e.getName()+" --- Type : "+e.getClass().getName()+" --- Position x : "+e.getPosition().getX()+" --- Position y : "+e.getPosition().getY()+"  --Categorie : "+e.getCategorie().getCategorie()+"\n";
         return str;
     }

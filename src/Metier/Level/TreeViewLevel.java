@@ -38,6 +38,7 @@ public class TreeViewLevel extends TreeView<String>{
         ArrayList<TreeItem<String>> types= new ArrayList<>();
         ArrayList<TreeItem<String>> categorie = new ArrayList<>();
         TreeItem<String> root = new TreeItem<>("Types");
+        System.out.println(liste);
         for(Entite e : liste)
         {
             TreeItem<String> actuType = new TreeItem<>(e.getClass().getSimpleName());

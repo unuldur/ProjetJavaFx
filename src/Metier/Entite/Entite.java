@@ -87,6 +87,7 @@ public abstract class Entite {
         this.categorie = e.getCategorie();
     }
 
+    public Entite(){}
     public abstract void accept(Visiteur v);
 
     @Override

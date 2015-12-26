@@ -2,8 +2,11 @@ package Vue;
 
 import Metier.Entite.CategorieEntite;
 import Metier.Entite.CreateurEntite;
+import Metier.Entite.CreateurEntite2;
 import Metier.Entite.Entite;
+import Metier.Item.Arme;
 import Metier.Item.CreateurItem;
+import Metier.Item.Item;
 import Metier.Level.Level;
 import Metier.Level.LevelCanvas;
 import Metier.Level.TreeViewLevel;
@@ -38,6 +41,8 @@ public class Controller {
         CreateurEntite ci = new CreateurItem();
         CreateurEntite cm = new CreateurMonstre();
         CreateurEntite ct = new CreateurTiles();
+
+        CreateurEntite2 creat = new CreateurEntite2();
         Level level = new Level();
         TreeViewLevel trl = new TreeViewLevel();
 
@@ -45,9 +50,9 @@ public class Controller {
         Entite ei = ci.fabriqueEntite();
         Entite em = cm.fabriqueEntite();
         Entite et = ct.fabriqueEntite();
-        em.setSprite("Image/Blop !.png");
+        em.setSprite("Image/Gluant.png");
         em.setName("Gluant");
-        ei.setSprite("Image/Epée de bois Item.png");
+        ei.setSprite("Image/Epée de bois.png");
         ei.setName("Epee de bois");
         et.setSprite("Image/tiletest.png");
         et.setName("tiletest");
@@ -61,9 +66,9 @@ public class Controller {
         level.addEntite(ct.fabriqueEntite(et),new Point2D(0,20));
         level.addEntite(ct.fabriqueEntite(et),new Point2D(20,20));
 
-        trl.addEntite(cm.fabriqueEntite(em));
-        trl.addEntite(ct.fabriqueEntite(et));
-        trl.addEntite(ci.fabriqueEntite(ei));
+        trl.addEntite(creat.createurEntite(Tile.class.getName(),"tiletest",new Sol()));
+        trl.addEntite(creat.createurEntite(Monstre.class.getName(),"Gluant",new Normal()));
+        trl.addEntite(creat.createurEntite(Item.class.getName(),"Epee de bois",new Arme()));
         trl.maj();
 
         PaneAffichage.getChildren().add(levelCanvas);
@@ -74,29 +79,13 @@ public class Controller {
         levelCanvas.setOnMousePressed(event-> {
             if(trl.getSelectionModel().getSelectedItem().isLeaf())
             {
-                System.out.println();
-                if(trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue().equals("Tile"))
-                    level.addEntite(ct.fabriqueEntite(trl.getSelectionModel().getSelectedItem().getValue(),new Sol(),new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
+                String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+                String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+                level.addEntite(creat.createurEntiteComplete(new StringBuilder().append("Metier.").append(type).append(".").append(type).toString(),trl.getSelectionModel().getSelectedItem().getValue()
+                        ,new StringBuilder().append("Metier.").append(type).append(".").append(cat).toString(),new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
                 levelCanvas.draw();
         }
         });
-
-    }
-
-    public void loadTreeItems(Monstre m) {
-        /*
-        TreeItem<String> root = new TreeItem<String>("Monstre");
-        root.setExpanded(true);
-
-        for (Categorie.values(): Categorie type) {
-            root.getChildren().add(new TreeItem<String>(type));
-        }
-        TreeItem<String> root2 = new TreeItem<String>("Root Node 2");
-        root2.setExpanded(true);
-
-        root2.getChildren().add(root);
-        treeView.setRoot(root2);
-        */
 
     }
 

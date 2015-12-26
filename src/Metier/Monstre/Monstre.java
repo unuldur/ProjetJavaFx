@@ -20,6 +20,7 @@ public class Monstre extends Entite {
         super(m);
     }
 
+    public Monstre(){super();}
     @Override
     public void accept(Visiteur v) {
         v.visit(this);
