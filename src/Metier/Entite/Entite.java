@@ -46,22 +46,13 @@ public abstract class Entite {
         return position;
     }
 
-    public void setPosition(Point2D position) { //avoir une image tous les 20pixel, BUG : toutes les positions sont à 0,0 TODO
-        /*
-        double x, y;
-        int i;
-
-        x=(position.getX()+1)/20;
-        i=(int) x;
-        x=i*20;
-
-        y=(position.getY()+1)/20;
-        i=(int) y;
-        y=i*20;
-        */
+    public void setPosition(Point2D position) {
         this.position=position;
     }
 
+    /**
+     * @param categorie la categorie de l'entite
+     */
     private CategorieEntite categorie;
 
     public CategorieEntite getCategorie() {
@@ -71,6 +62,7 @@ public abstract class Entite {
     public void setCategorie(CategorieEntite categorie) {
         this.categorie = categorie;
     }
+
 
 
     public Entite(String name, Point2D position,String sprite,CategorieEntite cat) {

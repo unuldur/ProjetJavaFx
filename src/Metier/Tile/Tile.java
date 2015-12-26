@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  */
 public class Tile extends Entite {
 
-    public Tile(){super();};
+    public Tile(){super();}
     public Tile(String name, Point2D position,String sprite,CategorieEntite t) {
         super(name, position,sprite,t);
     }
@@ -26,6 +26,13 @@ public class Tile extends Entite {
     @Override
     public void accept(Visiteur v) {
         v.visit(this);
+    }
+
+    @Override
+    public void setPosition(Point2D position)
+    {
+        Point2D posFinal = new Point2D((int)(position.getX()/20) * 20,(int)(position.getY()/20) *20);
+        super.setPosition(posFinal);
     }
 
     @Override
