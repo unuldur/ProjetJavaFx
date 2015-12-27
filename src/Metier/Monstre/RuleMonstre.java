@@ -13,20 +13,14 @@ public class RuleMonstre extends RuleEntite {
 
     @Override
     public boolean validerEntite(Entite e, Level l) {
-        int i=0;
-        //int j=0; //var pour debug
-        ArrayList<Entite> listEntite = l.getListEntite();
-        for(Entite el : listEntite) {
-            if (el.getClass().getName() == "Metier.Monstre.Monstre") {
-                if(el.getPosition().getX()==e.getPosition().getX() && el.getPosition().getY() == e.getPosition().getY()) {
-                    i++;
-                }
-                //System.out.println(el.getClass().toString()+" "+el.getPosition().toString() + " " +j+ " " +i+" "+el.getPosition().toString() + " " +e.getPosition().toString()); //debugging
-            }
-            //j++; //var pour debug
-        }
-        if(i==0)
+        return super.validerEntite(e,l);
+        /*
+        Entite TileDessous;
+        if( !super.validerEntite(e,l)) return false;
+        TileDessous = l.findEntite(e.getPosition(),"Tile");
+        if(TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol"))
             return true;
         return false;
+        */
     }
 }

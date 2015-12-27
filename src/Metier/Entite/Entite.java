@@ -1,6 +1,8 @@
 package Metier.Entite;
 
 import Metier.Visiteur.Visiteur;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -48,6 +50,42 @@ public abstract class Entite {
 
     public void setPosition(Point2D position) {
         this.position=position;
+    }
+
+
+    /**
+     * @param width taille x de l'Entite
+     */
+    private IntegerProperty width = new SimpleIntegerProperty();
+
+    public int getWidth() {
+        return width.get();
+    }
+
+    public IntegerProperty widthProperty() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width.set(width);
+    }
+
+    /**
+     * @param height taille y de l'Entite
+     */
+
+    private IntegerProperty height = new SimpleIntegerProperty();
+
+    public int getHeight() {
+        return height.get();
+    }
+
+    public IntegerProperty heightProperty() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height.set(height);
     }
 
     /**

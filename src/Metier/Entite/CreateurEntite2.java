@@ -2,6 +2,7 @@ package Metier.Entite;
 
 import Metier.Tile.Sol;
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 
 
 /**
@@ -39,6 +40,9 @@ public class CreateurEntite2 {
         Entite e = createurEntite(classe,name,createurCategorie.createurCategorie(cat));
         e.setSprite(new StringBuilder().append("Image/").append(name).append(".png").toString());
         e.setPosition(pos);
+        Image im = new Image(e.getSprite());
+        e.setWidth((int)im.getWidth());
+        e.setHeight((int)im.getHeight());
         return e;
     }
 }

@@ -47,20 +47,6 @@ public class LevelCanvas extends Canvas{
                 }
             }
         }
-        /*
-        vi.setGraphicsContext(getGraphicsContext2D());
-        vm.setGraphicsContext(getGraphicsContext2D());
-        vt.setGraphicsContext(getGraphicsContext2D());
-
-        for (Entite e:level.getListEntite()) {
-            e.accept(vt);
-        }
-        for (Entite e:level.getListEntite()) {
-            e.accept(vm);
-        }
-        for (Entite e:level.getListEntite()) {
-            e.accept(vi);
-        }*/
 
     }
 }

@@ -2,6 +2,7 @@ package Metier.Level;
 
 import Metier.Entite.RuleEntite;
 import Metier.Item.RuleItem;
+import Metier.Monstre.Categorie;
 import Metier.Monstre.RuleMonstre;
 import Metier.Tile.RuleTile;
 import Metier.Type;
@@ -32,6 +33,15 @@ public class Level {
     {
         if(!listEntite.remove(e))
             System.err.println("Erreur lors de la suppression : entité absente du niveau. Veuillez revérifier vos arguments.");
+    }
+
+    public Entite findEntite(Point2D pos, String classe)
+    {
+        for (Entite e:listEntite) {
+            if(e.getClass().getSimpleName().equals(classe) && e.getPosition()==pos)
+                return e;
+        }
+        return null;
     }
 
     public boolean isOk(Entite e) { //isOk va servir à appeler isOkRule, après avoir déterminer quel regle utiliser

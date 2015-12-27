@@ -56,19 +56,21 @@ public class Controller {
         ei.setName("Epee de bois");
         et.setSprite("Image/tiletest.png");
         et.setName("tiletest");
-        level.addEntite(ci.fabriqueEntite(ei),new Point2D(10,10));
-
-        level.addEntite(cm.fabriqueEntite(em),new Point2D(0,0));
-        level.addEntite(cm.fabriqueEntite(em),new Point2D(10,16));
 
         level.addEntite(ct.fabriqueEntite(et),new Point2D(0,0));
         level.addEntite(ct.fabriqueEntite(et),new Point2D(20,0));
         level.addEntite(ct.fabriqueEntite(et),new Point2D(0,20));
         level.addEntite(ct.fabriqueEntite(et),new Point2D(20,20));
 
+        level.addEntite(ci.fabriqueEntite(ei),new Point2D(10,10));
+
+        level.addEntite(cm.fabriqueEntite(em),new Point2D(0,0));
+        level.addEntite(cm.fabriqueEntite(em),new Point2D(10,16));
+
+
         trl.addEntite(creat.createurEntite(Tile.class.getName(),"tiletest",new Sol()));
         trl.addEntite(creat.createurEntite(Monstre.class.getName(),"Gluant",new Normal()));
-        trl.addEntite(creat.createurEntite(Item.class.getName(),"Epee de bois",new Arme()));
+        trl.addEntite(creat.createurEntite(Item.class.getName(),"Epée de bois",new Arme()));
         trl.maj();
 
         PaneAffichage.getChildren().add(levelCanvas);
@@ -81,10 +83,10 @@ public class Controller {
             {
                 String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
                 String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-                level.addEntite(creat.createurEntiteComplete(new StringBuilder().append("Metier.").append(type).append(".").append(type).toString(),trl.getSelectionModel().getSelectedItem().getValue()
-                        ,new StringBuilder().append("Metier.").append(type).append(".").append(cat).toString(),new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
+                level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type,trl.getSelectionModel().getSelectedItem().getValue()
+                        , "Metier." + type + "." + cat,new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
                 levelCanvas.draw();
-        }
+            }
         });
 
     }
