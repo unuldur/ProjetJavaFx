@@ -8,6 +8,7 @@ import Metier.Visiteur.VisiteurAffichageTile;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,8 @@ public class LevelCanvas extends Canvas{
     public void draw()
     {
         GraphicsContext gc = getGraphicsContext2D();
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0,0,getWidth(),getHeight());
          for (String classe: Ordre) {
 
             for (Entite e:level.getListEntite()) {

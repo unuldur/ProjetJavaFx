@@ -16,4 +16,14 @@ public class  Collisions {
         }
         return false;
     }
+
+    public static boolean pointEntite(int curseur_x,int curseur_y,Entite e)
+    {
+        if (curseur_x >= e.getPosition().getX()
+                && curseur_x < e.getPosition().getX() + e.getWidth()
+                && curseur_y >= e.getPosition().getY()
+                && curseur_y <e.getPosition().getY()+e.getHeight())
+            return true;
+        return false;
+    }
 }

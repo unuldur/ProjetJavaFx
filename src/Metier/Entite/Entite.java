@@ -132,6 +132,7 @@ public abstract class Entite {
         if(!e.getCategorie().equals(getCategorie())) return false;
         if(!e.getPosition().equals(getPosition())) return false;
         if(!e.getName().equals(getName())) return false;
+
         return true;
     }
 }

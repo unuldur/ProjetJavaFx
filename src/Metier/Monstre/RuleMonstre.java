@@ -13,14 +13,12 @@ public class RuleMonstre extends RuleEntite {
 
     @Override
     public boolean validerEntite(Entite e, Level l) {
-        return super.validerEntite(e,l);
-        /*
+        if(!super.validerEntite(e,l)) return false;
         Entite TileDessous;
         if( !super.validerEntite(e,l)) return false;
         TileDessous = l.findEntite(e.getPosition(),"Tile");
         if(TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol"))
             return true;
         return false;
-        */
     }
 }

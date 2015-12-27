@@ -60,14 +60,21 @@ public class Controller {
         levelCanvas.heightProperty().bind(PaneAffichage.heightProperty());
         levelCanvas.widthProperty().bind(PaneAffichage.widthProperty());
         levelCanvas.setOnMousePressed(event-> {
-            if(trl.getSelectionModel().getSelectedItem().isLeaf())
+            if(event.isPrimaryButtonDown())
+                if(trl.getSelectionModel().getSelectedItem().isLeaf())
+                {
+                    String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+                    String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+                    level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type,trl.getSelectionModel().getSelectedItem().getValue()
+                            , "Metier." + type + "." + cat,new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
+                    levelCanvas.draw();
+                }
+            if (event.isSecondaryButtonDown())
             {
-                String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
-                String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-                level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type,trl.getSelectionModel().getSelectedItem().getValue()
-                        , "Metier." + type + "." + cat,new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
+                level.delEntiteByPos(new Point2D(event.getX(),event.getY()));
                 levelCanvas.draw();
             }
+
         });
 
     }

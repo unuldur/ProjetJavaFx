@@ -1,12 +1,15 @@
 package Metier.Level;
 
+import Metier.Collisions;
 import Metier.Entite.RuleEntite;
 import Metier.Item.RuleItem;
 import Metier.Monstre.Categorie;
+import Metier.Monstre.Monstre;
 import Metier.Monstre.RuleMonstre;
 import Metier.Tile.RuleTile;
 import Metier.Type;
 import Metier.Entite.Entite;
+import Metier.Visiteur.Visiteur;
 import javafx.geometry.Point2D;
 
 import java.util.ArrayList;
@@ -37,17 +40,18 @@ public class Level {
 
     public void delEntiteByPos(Point2D pos)
     {
-        Entite entite;
+        Entite entite = new Monstre();
         for (Entite e:listEntite) {
-            if( e.getPosition()==pos)
+            if(Collisions.pointEntite((int)pos.getX(),(int)pos.getY(),e))
                 entite = e;
         }
+        listEntite.remove(entite);
     }
 
     public Entite findEntite(Point2D pos, String classe)
     {
         for (Entite e:listEntite) {
-            if(e.getClass().getSimpleName().equals(classe) && e.getPosition()==pos)
+            if(e.getClass().getSimpleName().equals(classe) && Collisions.pointEntite((int)pos.getX(),(int)pos.getY(),e))
                 return e;
         }
         return null;
