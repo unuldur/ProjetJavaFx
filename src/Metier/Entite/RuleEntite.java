@@ -1,5 +1,6 @@
 package Metier.Entite;
 
+import Metier.Collisions;
 import Metier.Level.Level;
 
 import java.util.ArrayList;
@@ -14,11 +15,7 @@ public abstract class RuleEntite {
         ArrayList<Entite> listEntite = l.getListEntite();
         for(Entite el : listEntite) {
             if (el.getClass() == e.getClass()) {
-                if ((e.getPosition().getX() < el.getPosition().getX() + el.getWidth())
-                        && (e.getPosition().getX() + e.getWidth() > el.getPosition().getX())
-                        && (e.getPosition().getY() < el.getPosition().getY() + el.getHeight())
-                        && (e.getPosition().getY() + e.getHeight() > el.getPosition().getY())
-                        ) {
+                if (Collisions.deuxEntite(e,el)) {
                             return false;
                         }
             }

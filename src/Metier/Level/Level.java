@@ -35,6 +35,15 @@ public class Level {
             System.err.println("Erreur lors de la suppression : entité absente du niveau. Veuillez revérifier vos arguments.");
     }
 
+    public void delEntiteByPos(Point2D pos)
+    {
+        Entite entite;
+        for (Entite e:listEntite) {
+            if( e.getPosition()==pos)
+                entite = e;
+        }
+    }
+
     public Entite findEntite(Point2D pos, String classe)
     {
         for (Entite e:listEntite) {

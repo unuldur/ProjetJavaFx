@@ -11,35 +11,17 @@ import java.util.ArrayList;
 
 public class TreeViewLevel extends TreeView<String>{
     
-    private ArrayList<Entite> liste;
+    private EntitesDisponibles entites ;
     
-    public TreeViewLevel()
+    public TreeViewLevel(EntitesDisponibles entitesDisponibles)
     {
-        this.liste = new ArrayList<>();
+        entites = entitesDisponibles;
     }
-    
-    public TreeViewLevel(ArrayList<Entite> liste)
-    {
-        this.liste = liste;
-    }
-    
-    public void addEntite(Entite entite)
-    {
-        this.liste.add(entite);
-    }
-    
-    public ArrayList<Entite> getEntites()
-    {
-        return this.liste;
-    }
-    
+
     public void maj()
     {
-        ArrayList<TreeItem<String>> types= new ArrayList<>();
-        ArrayList<TreeItem<String>> categorie = new ArrayList<>();
         TreeItem<String> root = new TreeItem<>("Types");
-        System.out.println(liste);
-        for(Entite e : liste)
+        for(Entite e : entites.getEntites())
         {
             TreeItem<String> actuType = new TreeItem<>(e.getClass().getSimpleName());
             if(!root.getChildren().contains(actuType))

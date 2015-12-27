@@ -18,28 +18,17 @@ public class EntitesDisponibles {
     {
         this.liste = liste;
     }
-    
-    public void addEntite(Entite entite)
-    {
-        this.liste.add(entite);
-    }
-    
     public ArrayList<Entite> getEntites()
     {
         return this.liste;
     }
-    
-    public ArrayList<Entite> getEntites(Type type)
-    {        
-        ArrayList<Entite> retour = new ArrayList<>();
-        for(Entite e : liste)
-        {
-            if(e.getClass().toString().endsWith("."+type.toString()))
-            {
-                retour.add(e);
-            }
-        }
-        
-        return retour;
+
+    public void addEntite(Entite entite)
+    {
+        this.liste.add(entite);
+    }
+
+    public void delEntite(Entite entite) {
+        liste.remove(entite);
     }
 }

@@ -7,6 +7,7 @@ import Metier.Entite.Entite;
 import Metier.Item.Arme;
 import Metier.Item.CreateurItem;
 import Metier.Item.Item;
+import Metier.Level.EntitesDisponibles;
 import Metier.Level.Level;
 import Metier.Level.LevelCanvas;
 import Metier.Level.TreeViewLevel;
@@ -29,6 +30,9 @@ import java.util.List;
 
 public class Controller {
 
+    private TreeViewLevel trl;
+    private EntitesDisponibles entitesDisponibles;
+    private CreateurEntite2 creat;
     @FXML
     Pane PaneAffichage;
 
@@ -38,39 +42,16 @@ public class Controller {
     @FXML
     public void initialize()
     {
-        CreateurEntite ci = new CreateurItem();
-        CreateurEntite cm = new CreateurMonstre();
-        CreateurEntite ct = new CreateurTiles();
-
-        CreateurEntite2 creat = new CreateurEntite2();
+        creat = new CreateurEntite2();
         Level level = new Level();
-        TreeViewLevel trl = new TreeViewLevel();
-
+        entitesDisponibles= new EntitesDisponibles();
+        trl = new TreeViewLevel(entitesDisponibles);
         LevelCanvas levelCanvas = new LevelCanvas(level, new ArrayList<>(Arrays.asList("Tile", "Item", "Monstre")));
-        Entite ei = ci.fabriqueEntite();
-        Entite em = cm.fabriqueEntite();
-        Entite et = ct.fabriqueEntite();
-        em.setSprite("Image/Gluant.png");
-        em.setName("Gluant");
-        ei.setSprite("Image/Epée de bois.png");
-        ei.setName("Epee de bois");
-        et.setSprite("Image/tiletest.png");
-        et.setName("tiletest");
-
-        level.addEntite(ct.fabriqueEntite(et),new Point2D(0,0));
-        level.addEntite(ct.fabriqueEntite(et),new Point2D(20,0));
-        level.addEntite(ct.fabriqueEntite(et),new Point2D(0,20));
-        level.addEntite(ct.fabriqueEntite(et),new Point2D(20,20));
-
-        level.addEntite(ci.fabriqueEntite(ei),new Point2D(10,10));
-
-        level.addEntite(cm.fabriqueEntite(em),new Point2D(0,0));
-        level.addEntite(cm.fabriqueEntite(em),new Point2D(10,16));
 
 
-        trl.addEntite(creat.createurEntite(Tile.class.getName(),"tiletest",new Sol()));
-        trl.addEntite(creat.createurEntite(Monstre.class.getName(),"Gluant",new Normal()));
-        trl.addEntite(creat.createurEntite(Item.class.getName(),"Epée de bois",new Arme()));
+        entitesDisponibles.addEntite(creat.createurEntite(Tile.class.getName(),"tiletest","Metier.Tile.Sol"));
+        entitesDisponibles.addEntite(creat.createurEntite(Monstre.class.getName(),"Gluant","Metier.Monstre.Normal"));
+        entitesDisponibles.addEntite(creat.createurEntite(Item.class.getName(),"Epée de bois","Metier.Item.Arme"));
         trl.maj();
 
         PaneAffichage.getChildren().add(levelCanvas);
@@ -89,6 +70,19 @@ public class Controller {
             }
         });
 
+    }
+
+    @FXML
+    public void SuprimerEntiteTreeView()
+    {
+        if(trl.getSelectionModel().getSelectedItem().isLeaf())
+        {
+            String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+            String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+            entitesDisponibles.delEntite(creat.createurEntite("Metier." + type + "." + type,trl.getSelectionModel().getSelectedItem().getValue()
+                    ,"Metier." + type + "." + cat ));
+            trl.maj();
+        }
     }
 
 

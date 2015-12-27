@@ -12,13 +12,13 @@ import javafx.scene.image.Image;
 public class CreateurEntite2 {
 
     CreateurCategorie createurCategorie = new CreateurCategorie();
-    public Entite createurEntite(String classe,String name,CategorieEntite cat)
+    public Entite createurEntite(String classe,String name,String cat)
     {
         try {
 
             Entite e = (Entite)Class.forName(classe).newInstance();
             e.setName(name);
-            e.setCategorie(cat);
+            e.setCategorie(createurCategorie.createurCategorie(cat));
             return e;
         }catch (ClassNotFoundException e)
         {
@@ -37,7 +37,7 @@ public class CreateurEntite2 {
         }
     }
     public Entite createurEntiteComplete(String classe, String name, String cat, Point2D pos) {
-        Entite e = createurEntite(classe,name,createurCategorie.createurCategorie(cat));
+        Entite e = createurEntite(classe,name,cat);
         e.setSprite(new StringBuilder().append("Image/").append(name).append(".png").toString());
         e.setPosition(pos);
         Image im = new Image(e.getSprite());

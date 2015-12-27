@@ -124,4 +124,14 @@ public abstract class Entite {
     public String toString() {
         return getClass().toString()+" "+getPosition().toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != this.getClass()) return false;
+        Entite e = (Entite)obj;
+        if(!e.getCategorie().equals(getCategorie())) return false;
+        if(!e.getPosition().equals(getPosition())) return false;
+        if(!e.getName().equals(getName())) return false;
+        return true;
+    }
 }
