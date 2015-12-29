@@ -7,10 +7,12 @@ import javafx.geometry.Point2D;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by PAYS on 26/11/2015.
  */
-public abstract class Entite {
+public abstract class Entite implements Serializable{
 
     /**
      * @param name nom de l'entité

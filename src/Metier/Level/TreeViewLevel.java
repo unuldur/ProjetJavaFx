@@ -2,6 +2,7 @@ package Metier.Level;
 
 import Metier.Entite.Entite;
 import Metier.Monstre.Categorie;
+import Metier.Observateur.Observateur;
 import Metier.Type;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -9,7 +10,7 @@ import javafx.scene.control.TreeView;
 import java.util.ArrayList;
 
 
-public class TreeViewLevel extends TreeView<String>{
+public class TreeViewLevel extends TreeView<String> implements Observateur{
     
     private EntitesDisponibles entites ;
     
@@ -46,5 +47,10 @@ public class TreeViewLevel extends TreeView<String>{
             }
         }
         setRoot(root);
+    }
+
+    @Override
+    public void update() {
+        maj();
     }
 }

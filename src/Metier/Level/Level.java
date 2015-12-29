@@ -6,11 +6,13 @@ import Metier.Item.RuleItem;
 import Metier.Monstre.Categorie;
 import Metier.Monstre.Monstre;
 import Metier.Monstre.RuleMonstre;
+import Metier.Observateur.Sujet;
 import Metier.Tile.RuleTile;
 import Metier.Type;
 import Metier.Entite.Entite;
 import Metier.Visiteur.Visiteur;
 import javafx.geometry.Point2D;
+import sun.security.ssl.SunJSSE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.List;
  * Created by PAYS on 03/12/2015.
  */
 
-public class Level {
+public class Level extends Sujet {
     ArrayList<Entite> listEntite = new ArrayList<>();
 
     public void addEntite(Entite e, Point2D p)
@@ -28,6 +30,7 @@ public class Level {
         if(isOk(e)) {
             e.setPosition(p);
             listEntite.add(e);
+            notifier();
         }
         else System.out.println("Erreur à l'ajout. Vérifiez les arguments de votre entité.");
     }
@@ -36,6 +39,7 @@ public class Level {
     {
         if(!listEntite.remove(e))
             System.err.println("Erreur lors de la suppression : entité absente du niveau. Veuillez revérifier vos arguments.");
+        notifier();
     }
 
     public void delEntiteByPos(Point2D pos)
@@ -46,6 +50,18 @@ public class Level {
                 entite = e;
         }
         listEntite.remove(entite);
+        notifier();
+    }
+
+    public void delAll()
+    {
+        listEntite.clear();
+        notifier();
+    }
+
+    public void setListEntite(ArrayList<Entite> listEntite) {
+        this.listEntite = listEntite;
+        notifier();
     }
 
     public Entite findEntite(Point2D pos, String classe)

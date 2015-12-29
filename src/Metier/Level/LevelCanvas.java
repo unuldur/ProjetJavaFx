@@ -1,6 +1,7 @@
 package Metier.Level;
 
 import Metier.Entite.Entite;
+import Metier.Observateur.Observateur;
 import Metier.Visiteur.Visiteur;
 import Metier.Visiteur.VisiteurAffichageItem;
 import Metier.Visiteur.VisiteurAffichageMonstre;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Created by PAYS on 10/12/2015.
  */
-public class LevelCanvas extends Canvas{
+public class LevelCanvas extends Canvas implements Observateur{
     private Level level;
     VisiteurAffichageItem vi;
     VisiteurAffichageMonstre vm;
@@ -51,5 +52,10 @@ public class LevelCanvas extends Canvas{
             }
         }
 
+    }
+
+    @Override
+    public void update() {
+        draw();
     }
 }
