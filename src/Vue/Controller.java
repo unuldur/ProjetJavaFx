@@ -1,6 +1,7 @@
 package Vue;
 
 import Metier.Entite.CreateurEntite2;
+import Metier.Entite.Entite;
 import Metier.Item.Item;
 import Metier.Level.EntitesDisponibles;
 import Metier.Level.Level;
@@ -14,13 +15,18 @@ import Metier.Save.SaveMap;
 import Metier.Save.SaveTXT;
 import Metier.Tile.Tile;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,6 +37,9 @@ public class Controller {
     private CreateurEntite2 creat;
     private Level level;
     private LevelCanvas levelCanvas;
+
+    private ControllerEntite controllerEntite;
+    private Stage stageEntite;
 
     @FXML
     Pane PaneAffichage;
@@ -132,9 +141,10 @@ public class Controller {
     }
 
 
-    public void Init(Stage stage)
+    public void Init(Stage stage,Stage stageEntite,ControllerEntite controllerEntite)
     {
-
+        this.stageEntite = stageEntite;
+        this.controllerEntite = controllerEntite;
         stage.setOnCloseRequest(event ->
         {
             File f = new File("Save.dat");
@@ -142,5 +152,32 @@ public class Controller {
             save.save(entitesDisponibles.getEntites(),f);
         });
     }
+
+    @FXML
+    public void addEntite()
+    {
+        Entite e ;
+        controllerEntite.setEntite();
+        stageEntite.showAndWait();
+        e = controllerEntite.getEntite();
+        if (controllerEntite.isOkClicked() && !entitesDisponibles.findEntite(e)) {
+            entitesDisponibles.addEntite(e);
+        }
+        else System.out.println("erreur");
+    }
+
+    @FXML
+    public void modifierEntiter()
+    {
+        if(trl.getSelectionModel().getSelectedItem().isLeaf())
+        {
+            String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+            String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+            controllerEntite.setEntite(trl.getSelectionModel().getSelectedItem().getValue(),cat,type);
+            stageEntite.showAndWait();
+
+        }
+    }
+
 
 }

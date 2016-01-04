@@ -2,7 +2,6 @@ package Metier.Level;
 
 import Metier.Entite.Entite;
 import Metier.Observateur.Sujet;
-import Metier.Type;
 import java.util.ArrayList;
 
 
@@ -28,6 +27,11 @@ public class EntitesDisponibles extends Sujet{
     {
         this.liste.add(entite);
         notifier();
+    }
+
+    public boolean findEntite(Entite e)
+    {
+        return liste.contains(e);
     }
 
     public void delEntite(Entite entite) {

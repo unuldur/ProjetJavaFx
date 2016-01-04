@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="fenetre" fx:controller="Vue.ControllerEntite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" GridPane.rowIndex="3" />
+            <Label GridPane.columnIndex="1" fx:id="name"/>
+            <Button mnemonicParsing="false" text="Chercher" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="path" onAction="#loadImage"/>
+            <ComboBox GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="types"/>
+            <ComboBox  GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="categories"/>
+            <Button mnemonicParsing="false" text="OK" GridPane.rowIndex="4" onAction="#handleOk"/>
+            <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleCancel"/>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

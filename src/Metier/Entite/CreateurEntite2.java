@@ -23,26 +23,36 @@ public class CreateurEntite2 {
         }catch (ClassNotFoundException e)
         {
             System.out.println(e.toString());
+            System.out.println(e.getClass().getSimpleName());
             return null;
         }
         catch(InstantiationException e)
         {
             System.out.println(e.toString());
+            System.out.println(e.getClass().getSimpleName());
             return null;
         }
         catch (IllegalAccessException e)
         {
             System.out.println(e.toString());
+            System.out.println(e.getClass().getSimpleName());
             return null;
         }
     }
     public Entite createurEntiteComplete(String classe, String name, String cat, Point2D pos) {
         Entite e = createurEntite(classe,name,cat);
-        e.setSprite(new StringBuilder().append("Image/").append(name).append(".png").toString());
+        e.setSprite(new StringBuilder().append("Image/").append(name).toString());
         e.setPosition(pos);
-        Image im = new Image(e.getSprite());
-        e.setWidth((int)im.getWidth());
-        e.setHeight((int)im.getHeight());
+        try{
+
+            Image im = new Image(e.getSprite());
+            e.setWidth((int)im.getWidth());
+            e.setHeight((int)im.getHeight());
+        }catch (Exception ex)
+        {
+            System.out.println(e.getSprite());
+            System.out.println(ex.getMessage());
+        }
         return e;
     }
 }

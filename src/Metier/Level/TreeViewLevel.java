@@ -4,10 +4,12 @@ import Metier.Entite.Entite;
 import Metier.Monstre.Categorie;
 import Metier.Observateur.Observateur;
 import Metier.Type;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 
 public class TreeViewLevel extends TreeView<String> implements Observateur{
@@ -24,29 +26,42 @@ public class TreeViewLevel extends TreeView<String> implements Observateur{
         TreeItem<String> root = new TreeItem<>("Types");
         for(Entite e : entites.getEntites())
         {
-            TreeItem<String> actuType = new TreeItem<>(e.getClass().getSimpleName());
-            if(!root.getChildren().contains(actuType))
+            String nameType = e.getClass().getSimpleName();
+            TreeItem<String> type = treeItemEqual(root.getChildren(),nameType);
+            if(type == null)
             {
-                root.getChildren().add(actuType);
+                type = new TreeItem<>(nameType);
+                root.getChildren().add(type);
             }
 
             if(e.getCategorie()!= null)
             {
+                String nameCategorie = e.getCategorie().getCategorie();
+                TreeItem<String> categorie = treeItemEqual(root.getChildren().get(root.getChildren().lastIndexOf(type)).getChildren(),nameCategorie);
 
-                TreeItem<String> actuCategorie = new TreeItem<>(e.getCategorie().getCategorie());
-                if(!root.getChildren().get(root.getChildren().lastIndexOf(actuType)).getChildren().contains(actuCategorie))
+                if(categorie == null)
                 {
-                    root.getChildren().get(root.getChildren().lastIndexOf(actuType)).getChildren().add(actuCategorie);
+                    categorie =  new TreeItem<>(nameCategorie);
+                    root.getChildren().get(root.getChildren().lastIndexOf(type)).getChildren().add(categorie);
                 }
-                root.getChildren().get(root.getChildren().lastIndexOf(actuType)).getChildren()
-                        .get(root.getChildren().get(root.getChildren().lastIndexOf(actuType)).getChildren().lastIndexOf(actuCategorie)).getChildren().add(new TreeItem<>(e.getName()));
+                root.getChildren().get(root.getChildren().lastIndexOf(type)).getChildren()
+                        .get(root.getChildren().get(root.getChildren().lastIndexOf(type)).getChildren().lastIndexOf(categorie)).getChildren().add(new TreeItem<>(e.getName()));
             }
             else
             {
-                root.getChildren().get(root.getChildren().lastIndexOf(actuType)).getChildren().add(new TreeItem<>(e.getName()));
+                root.getChildren().get(root.getChildren().lastIndexOf(type)).getChildren().add(new TreeItem<>(e.getName()));
             }
         }
         setRoot(root);
+    }
+
+    private TreeItem<String> treeItemEqual(ObservableList<TreeItem<String>> list,String name)
+    {
+        for (TreeItem<String> item:list) {
+            if(item.getValue().equals(name))
+                return item;
+        }
+        return null;
     }
 
     @Override

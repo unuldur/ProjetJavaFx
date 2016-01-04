@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.security.cert.Extension;
 import java.util.ArrayList;
 
 /**
@@ -34,9 +35,9 @@ public class LoadMap extends Load{
                 Point2D pos = new Point2D(Double.parseDouble(paramEntite[3]),Double.parseDouble(paramEntite[4]));
                 entites.add(creat.createurEntiteComplete(paramEntite[0],paramEntite[1],paramEntite[2],pos));
             }
-        } catch (final java.io.IOException e) {
-        } catch (final ClassNotFoundException e) {
-            e.printStackTrace();
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
         } finally {
             try {
                 if (ois != null) {

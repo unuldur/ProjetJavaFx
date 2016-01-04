@@ -26,9 +26,9 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="PanetreeView" prefWidth="133.0" GridPane.rowIndex="0" />
+            <Pane fx:id="PanetreeView" prefWidth="200.0" GridPane.rowIndex="0" />
             <Button onAction="#SuprimerEntiteTreeView" text="Supprimer" GridPane.rowIndex="1" />
-            <Button text="Modifier" GridPane.rowIndex="2" />
+            <Button text="Modifier" GridPane.rowIndex="2" onAction="#modifierEntiter"/>
          </children>
       </GridPane>
    </right>
@@ -51,8 +51,8 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Undo" />
-              <!--<MenuItem mnemonicParsing="false" text="Redo" />-->
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Redo" />
+              <MenuItem mnemonicParsing="false" text="Add" onAction="#addEntite"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
