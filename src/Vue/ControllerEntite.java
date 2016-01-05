@@ -180,13 +180,9 @@ public class ControllerEntite {
         if(f!= null)
         {
             String nam = f.getName();
-            String[]a = nam.split(" ");
-             String nomSansEspace="";
-            for (String fin:a ) {
-                nomSansEspace= nomSansEspace + fin;
-            }
+            nam = nam.replace(' ','_');
             path.setText(f.getPath());
-            name.setText(nomSansEspace);
+            name.setText(nam);
         }
     }
 }

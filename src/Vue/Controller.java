@@ -171,10 +171,13 @@ public class Controller {
     {
         if(trl.getSelectionModel().getSelectedItem().isLeaf())
         {
+            String name = trl.getSelectionModel().getSelectedItem().getValue();
             String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
             String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-            controllerEntite.setEntite(trl.getSelectionModel().getSelectedItem().getValue(),cat,type);
+            controllerEntite.setEntite(name,cat,type);
             stageEntite.showAndWait();
+            Entite e = controllerEntite.getEntite();
+            entitesDisponibles.modEntite(name,e);
 
         }
     }

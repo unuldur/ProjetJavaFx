@@ -40,7 +40,7 @@ public class LevelCanvas extends Canvas implements Observateur{
     public void draw()
     {
         GraphicsContext gc = getGraphicsContext2D();
-        gc.setFill(Color.WHITE);
+        //gc.setFill(Color.WHITE);
         gc.fillRect(0,0,getWidth(),getHeight());
          for (String classe: Ordre) {
 

@@ -29,6 +29,21 @@ public class EntitesDisponibles extends Sujet{
         notifier();
     }
 
+    public void modEntite(String nomVielleEntite,Entite nouvelle)
+    {
+        Entite aModifier = null;
+        for (Entite e:liste) {
+            if(e.getName().equals(nomVielleEntite))
+            {
+                aModifier = e;
+            }
+        }
+        if(aModifier != null){
+            delEntite(aModifier);
+            addEntite(nouvelle);
+        }
+        notifier();
+    }
     public boolean findEntite(Entite e)
     {
         return liste.contains(e);
