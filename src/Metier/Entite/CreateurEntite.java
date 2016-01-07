@@ -1,11 +1,7 @@
 package Metier.Entite;
 
-import Metier.Monstre.Categorie;
-import Metier.Tile.Sol;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 
 /**

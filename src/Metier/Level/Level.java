@@ -38,7 +38,7 @@ public class Level extends Sujet {
 
     public Entite getEntiteByPos(Point2D pos)
     {
-        Entite entite = new Monstre();
+        Entite entite = null;
         for (Entite e:listEntite) {
             if(Collisions.pointEntite((int)pos.getX(),(int)pos.getY(),e))
                 entite = e;

@@ -1,7 +1,5 @@
 package Metier.Entite;
 
-import Metier.Monstre.Categorie;
-
 import java.util.ArrayList;
 
 /**
