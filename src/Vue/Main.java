@@ -33,7 +33,7 @@ public class Main extends Application {
                         "AjoutEntite.fxml"
                 )
         );
-        AnchorPane page = (AnchorPane) loader.load();
+        AnchorPane page = loader.load();
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Edit Person");
         dialogStage.initModality(Modality.WINDOW_MODAL);

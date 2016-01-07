@@ -1,34 +1,29 @@
 package Vue;
 
-import Metier.Entite.CreateurEntite2;
+import Metier.Commande.CommandePlacer;
+import Metier.Commande.CommandeSupprimer;
+import Metier.Commande.Invocateur;
+import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
-import Metier.Item.Item;
 import Metier.Level.EntitesDisponibles;
 import Metier.Level.Level;
 import Metier.Level.LevelCanvas;
 import Metier.Level.TreeViewLevel;
 import Metier.Load.Load;
 import Metier.Load.LoadMap;
-import Metier.Monstre.Monstre;
 import Metier.Save.Save;
 import Metier.Save.SaveMap;
 import Metier.Save.SaveTXT;
-import Metier.Tile.Tile;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -36,12 +31,13 @@ public class Controller {
 
     private TreeViewLevel trl;
     private EntitesDisponibles entitesDisponibles;
-    private CreateurEntite2 creat;
+    private CreateurEntite creat;
     private Level level;
     private LevelCanvas levelCanvas;
 
     private ControllerEntite controllerEntite;
     private Stage stageEntite;
+    private Invocateur save;
 
     @FXML
     Pane PaneAffichage;
@@ -59,8 +55,8 @@ public class Controller {
     public void initialize()
     {
 
-
-        creat = new CreateurEntite2();
+        save = new Invocateur();
+        creat = new CreateurEntite();
         level = new Level();
         entitesDisponibles= new EntitesDisponibles();
         trl = new TreeViewLevel(entitesDisponibles);
@@ -84,21 +80,31 @@ public class Controller {
     {
         levelCanvas.heightProperty().bind(PaneAffichage.heightProperty());
         levelCanvas.widthProperty().bind(PaneAffichage.widthProperty());
-            levelCanvas.setOnMousePressed(event -> {
+            levelCanvas.setOnMouseDragged(event -> {
                 if (event.isPrimaryButtonDown())
-                    if (trl.getSelectionModel().getSelectedItem().isLeaf()) { //TODO : gérer NullPointerException
-                        String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
-                        String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-                        level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type, trl.getSelectionModel().getSelectedItem().getValue()
-                                , "Metier." + type + "." + cat, new Point2D(event.getX(), event.getY())), new Point2D(event.getX(), event.getY()));
-                    }
-                if (event.isSecondaryButtonDown()) {
-                    level.delEntiteByPos(new Point2D(event.getX(), event.getY()));
-                }
+                    ajoutEntite(event.getX(),event.getY());
 
             });
+        levelCanvas.setOnMousePressed(event -> {
+            if (event.isPrimaryButtonDown())
+                ajoutEntite(event.getX(),event.getY());
+            if (event.isSecondaryButtonDown()) {
+                save.doCom(new CommandeSupprimer(level,level.getEntiteByPos(new Point2D(event.getX(),event.getY()))));
+            }
+
+        });
 
         return levelCanvas;
+    }
+
+    private void ajoutEntite(double x, double y)
+    {
+        if (trl.getSelectionModel().getSelectedItem().isLeaf()) { //TODO : gérer NullPointerException
+            String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+            String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+            save.doCom(new CommandePlacer(level,creat.createurEntiteComplete("Metier." + type + "." + type, trl.getSelectionModel().getSelectedItem().getValue()
+                    , "Metier." + type + "." + cat, new Point2D(x, y))));
+        }
     }
 
     @FXML
@@ -197,5 +203,23 @@ public class Controller {
     {
         Window window = closeButton.getScene().getWindow();
         window.hide();
+    }
+
+    @FXML
+    public void undo()
+    {
+        save.undo();
+    }
+
+    @FXML
+    public void redo()
+    {
+        save.redo();
+    }
+
+    @FXML
+    public void newMap()
+    {
+        level.delAll();
     }
 }

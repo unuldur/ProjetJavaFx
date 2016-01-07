@@ -2,8 +2,6 @@ package Metier.Item;
 
         import Metier.Entite.CategorieEntite;
         import Metier.Entite.Entite;
-        import Metier.Visiteur.Visiteur;
-        import javafx.beans.property.StringProperty;
         import javafx.geometry.Point2D;
 
 /**
@@ -15,10 +13,6 @@ public class Item extends Entite {
     }
     public Item(){super();}
 
-    @Override
-    public void accept(Visiteur v) {
-        v.visit(this);
-    }
 
     public Item(Item m){super(m);}
 

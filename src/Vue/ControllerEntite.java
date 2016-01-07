@@ -1,7 +1,7 @@
 package Vue;
 
 import Metier.Entite.CategorieEntite;
-import Metier.Entite.CreateurEntite2;
+import Metier.Entite.CreateurEntite;
 import Metier.Entite.Entite;
 import Metier.ModulesLoader;
 import javafx.fxml.FXML;
@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +31,7 @@ public class ControllerEntite {
     private Stage dialogStage;
     private Entite entite;
     private boolean okClicked = false;
-    private CreateurEntite2 creat = new CreateurEntite2();
+    private CreateurEntite creat = new CreateurEntite();
 
     @FXML
     Button path;
@@ -89,30 +88,34 @@ public class ControllerEntite {
         if (isInputValid()) {
             entite = creat.createurEntite("Metier."+types.getValue()+"."+types.getValue(),name.getText(),"Metier."+types.getValue()+"."+categories.getValue());
             //deplacement du fichier image dans le repertoire
-            FileChannel in = null;
-            FileChannel out = null;
-            try {
-                // Init
-                in = new FileInputStream(path.getText()).getChannel();
-                out = new FileOutputStream("src\\Image\\"+name.getText()).getChannel();
-                in.transferTo(0, in.size(), out);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if(in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException ignored) {}
-                }
-                if(out != null) {
-                    try {
-                        out.close();
-                    } catch (IOException ignored) {}
-                }
-            }
+            cpImage(path.getText(),"src\\Image\\"+name.getText());
+            cpImage(path.getText(),"out\\production\\ProjetJavaFx\\Image\\"+name.getText());
             okClicked = true;
-
             dialogStage.close();
+        }
+    }
+
+    public void cpImage(String localisation,String newPos)
+    {
+        FileChannel in = null;
+        FileChannel out = null;
+        try {
+            in = new FileInputStream(path.getText()).getChannel();
+            out = new FileOutputStream("src\\Image\\"+name.getText()).getChannel();
+            in.transferTo(0, in.size(), out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(in != null) {
+                try {
+                    in.close();
+                } catch (IOException ignored) {}
+            }
+            if(out != null) {
+                try {
+                    out.close();
+                } catch (IOException ignored) {}
+            }
         }
     }
 
@@ -194,4 +197,6 @@ public class ControllerEntite {
             name.setText(nam);
         }
     }
+
+
 }

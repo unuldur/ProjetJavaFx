@@ -1,9 +1,7 @@
 package Metier.Load;
 
 import Metier.Entite.CreateurEntite;
-import Metier.Entite.CreateurEntite2;
 import Metier.Entite.Entite;
-import Metier.Level.Level;
 import javafx.geometry.Point2D;
 import javafx.stage.FileChooser;
 
@@ -11,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.security.cert.Extension;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +18,7 @@ public class LoadMap extends Load{
     @Override
     public ArrayList<Entite> Load(File file) {
         ArrayList<Entite> entites = new ArrayList<>();
-        CreateurEntite2 creat = new CreateurEntite2();
+        CreateurEntite creat = new CreateurEntite();
         ObjectInputStream ois = null;
         String entite;
         String[] paramEntite;

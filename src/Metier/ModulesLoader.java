@@ -32,9 +32,7 @@ public class ModulesLoader {
                 return false;
             // And not contain a "$", so plugin defined as inner class are not
             // permitted
-            if (path.indexOf('$') >= 0)
-                return false;
-            return true;
+            return path.indexOf('$') < 0;
         }
     };
     private ModulesLoader() {}

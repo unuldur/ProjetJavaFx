@@ -1,30 +1,28 @@
 package Metier.Entite;
 
-import Metier.Monstre.Categorie;
-
 import java.util.ArrayList;
 
 /**
- * Created by PAYS on 21/12/2015.
+ * Created by PAYS on 07/01/2016.
  */
-public class CreateurCategorie {
+public class CreateurRule {
 
-    ArrayList<CategorieEntite> listCategorie = new ArrayList<>();
+    ArrayList<RuleEntite> ruleEntites = new ArrayList<>();
 
-    public CategorieEntite createurCategorie(String classe)
+    public RuleEntite createurRule(String classe)
     {
         try {
 
-            CategorieEntite categorie = (CategorieEntite) Class.forName(classe).newInstance();
-            if(!listCategorie.contains(categorie))
+            RuleEntite rule = (RuleEntite) Class.forName(classe).newInstance();
+            if(!ruleEntites.contains(rule))
             {
-                listCategorie.add(categorie);
+                ruleEntites.add(rule);
             }
             else
             {
-                categorie = listCategorie.get(listCategorie.indexOf(categorie));
+                rule = ruleEntites.get(ruleEntites.indexOf(rule));
             }
-            return categorie;
+            return rule;
         }catch (ClassNotFoundException e)
         {
             System.out.println(e.toString());

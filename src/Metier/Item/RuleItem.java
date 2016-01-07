@@ -17,9 +17,7 @@ public class RuleItem extends RuleEntite {
         Entite TileDessous;
         if( !super.validerEntite(e,l)) return false;
         TileDessous = l.findEntite(e.getPosition(),"Tile");
-        if(TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol"))
-            return true;
-        return false;
+        return TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol");
     }
 
 }

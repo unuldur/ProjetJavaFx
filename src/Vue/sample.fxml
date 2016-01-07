@@ -11,6 +11,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
+<?import javafx.scene.input.KeyCombination?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <BorderPane fx:id="fenetre" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vue.Controller">
    <center>
       <Pane fx:id="PaneAffichage" BorderPane.alignment="CENTER" />
@@ -37,6 +39,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                <MenuItem mnemonicParsing="false" text="New" onAction="#newMap"/>
               <MenuItem mnemonicParsing="false" text="Open" onAction="#loadMap"/>
               <MenuItem mnemonicParsing="false" text="Save" onAction="#saveMap"/>
               <Menu mnemonicParsing="false" text="Export">
@@ -50,8 +53,16 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Undo" />
-              <MenuItem mnemonicParsing="false" text="Redo" />
+              <MenuItem mnemonicParsing="false" text="Undo" onAction="#undo">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="Z" control="ANY" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+              </MenuItem>
+              <MenuItem mnemonicParsing="false" text="Redo" onAction="#redo">
+                  <accelerator>
+                      <KeyCodeCombination alt="UP" code="Y" control="ANY" meta="UP" shift="UP" shortcut="UP"/>
+                  </accelerator>
+              </MenuItem>
               <MenuItem mnemonicParsing="false" text="Add" onAction="#addEntite"/>
             </items>
           </Menu>

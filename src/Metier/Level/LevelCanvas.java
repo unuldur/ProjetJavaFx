@@ -2,10 +2,6 @@ package Metier.Level;
 
 import Metier.Entite.Entite;
 import Metier.Observateur.Observateur;
-import Metier.Visiteur.Visiteur;
-import Metier.Visiteur.VisiteurAffichageItem;
-import Metier.Visiteur.VisiteurAffichageMonstre;
-import Metier.Visiteur.VisiteurAffichageTile;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -19,18 +15,12 @@ import java.util.List;
  */
 public class LevelCanvas extends Canvas implements Observateur{
     private Level level;
-    VisiteurAffichageItem vi;
-    VisiteurAffichageMonstre vm;
-    VisiteurAffichageTile vt;
 
     private ArrayList<String> Ordre;
 
     public LevelCanvas(Level l,ArrayList<String> ordre)
     {
         level=l;
-        vi =new VisiteurAffichageItem(getGraphicsContext2D());
-        vm =new VisiteurAffichageMonstre(getGraphicsContext2D());
-        vt =new VisiteurAffichageTile(getGraphicsContext2D());
 
         Ordre = ordre;
         widthProperty().addListener(evt -> draw());
@@ -40,7 +30,7 @@ public class LevelCanvas extends Canvas implements Observateur{
     public void draw()
     {
         GraphicsContext gc = getGraphicsContext2D();
-        //gc.setFill(Color.WHITE);
+        gc.setFill(Color.WHITE);
         gc.fillRect(0,0,getWidth(),getHeight());
          for (String classe: Ordre) {
 

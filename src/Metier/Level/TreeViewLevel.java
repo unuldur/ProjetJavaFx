@@ -1,15 +1,10 @@
 package Metier.Level;
 
 import Metier.Entite.Entite;
-import Metier.Monstre.Categorie;
 import Metier.Observateur.Observateur;
-import Metier.Type;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-
-import java.util.ArrayList;
-import java.util.Observable;
 
 
 public class TreeViewLevel extends TreeView<String> implements Observateur{

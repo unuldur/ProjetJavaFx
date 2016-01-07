@@ -1,6 +1,4 @@
 package Metier.Entite;
-
-import Metier.Visiteur.Visiteur;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
@@ -14,31 +12,41 @@ import java.io.Serializable;
  */
 public abstract class Entite implements Serializable{
 
+    private RuleEntite rule;
+
+    public RuleEntite getRule() {
+        return rule;
+    }
+
+    public void setRule(RuleEntite rule) {
+        this.rule = rule;
+    }
+
     /**
      * @param name nom de l'entité
      */
-    private StringProperty name = new SimpleStringProperty();
-    public String getName(){return name.get();}
-    public void setName(String name) {this.name.set(name);}
-    public StringProperty nameProperty() {return name;}
+    private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * @param sprite chemin vers le sprite de l'entité;
      */
 
-    private StringProperty sprite = new SimpleStringProperty();
-
-    public void setSprite(String sprite) {
-        this.sprite.set(sprite);
-    }
+    private String sprite;
 
     public String getSprite() {
-        return sprite.get();
+        return sprite;
     }
 
-    public StringProperty spriteProperty() {
-        return sprite;
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
     }
 
     /**
@@ -58,36 +66,28 @@ public abstract class Entite implements Serializable{
     /**
      * @param width taille x de l'Entite
      */
-    private IntegerProperty width = new SimpleIntegerProperty();
+    private int width;
 
     public int getWidth() {
-        return width.get();
-    }
-
-    public IntegerProperty widthProperty() {
         return width;
     }
 
     public void setWidth(int width) {
-        this.width.set(width);
+        this.width = width;
     }
 
     /**
      * @param height taille y de l'Entite
      */
 
-    private IntegerProperty height = new SimpleIntegerProperty();
+    private int height;
 
     public int getHeight() {
-        return height.get();
-    }
-
-    public IntegerProperty heightProperty() {
         return height;
     }
 
     public void setHeight(int height) {
-        this.height.set(height);
+        this.height = height;
     }
 
     /**
@@ -120,7 +120,6 @@ public abstract class Entite implements Serializable{
     }
 
     public Entite(){}
-    public abstract void accept(Visiteur v);
 
     @Override
     public String toString() {
@@ -133,8 +132,7 @@ public abstract class Entite implements Serializable{
         Entite e = (Entite)obj;
         if(!e.getCategorie().equals(getCategorie())) return false;
         if(!e.getPosition().equals(getPosition())) return false;
-        if(!e.getName().equals(getName())) return false;
+        return e.getName().equals(getName());
 
-        return true;
     }
 }

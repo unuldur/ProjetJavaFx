@@ -7,10 +7,8 @@ import java.io.Serializable;
  */
 public abstract class CategorieEntite implements Serializable{
     public abstract String getCategorie();
-
     @Override
     public boolean equals(Object obj) {
-        if(obj.getClass() != getClass()) return false;
-        return true;
+        return obj.getClass() == getClass();
     }
 }

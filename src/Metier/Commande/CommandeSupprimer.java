@@ -35,7 +35,7 @@ public class CommandeSupprimer implements Commande {
     @Override
     public void reverse()
     {      
-        level.addEntite(entite, pos);
+        level.addEntite(entite);
     }
     
 }

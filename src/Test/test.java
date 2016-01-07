@@ -1,19 +1,7 @@
 package Test;
 
-import Metier.Entite.CreateurEntite;
-import Metier.Entite.CreateurEntite2;
 import Metier.Entite.Entite;
-import Metier.Item.CreateurItem;
-import Metier.Item.Item;
-import Metier.Level.Level;
-import Metier.Level.LevelCanvas;
 import Metier.ModulesLoader;
-import Metier.Monstre.CreateurMonstre;
-import Metier.Monstre.Monstre;
-import Metier.Tile.CreateurTiles;
-import Metier.Tile.Sol;
-import Metier.Tile.Tile;
-import javafx.geometry.Point2D;
 
 import java.io.IOException;
 import java.util.Collection;

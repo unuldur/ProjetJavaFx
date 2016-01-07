@@ -17,19 +17,17 @@ public class CommandePlacer implements Commande {
     
     private final Level level;
     private final Entite entite;
-    private final Point2D pos;
     
-    public CommandePlacer(Level l, Entite e, Point2D p)
+    public CommandePlacer(Level l, Entite e)
     {
         this.level = l;
         this.entite = e;
-        this.pos = p;
     }
     
     @Override
     public void execute()
     {
-        level.addEntite(entite, pos);
+        level.addEntite(entite);
     }
     
     @Override

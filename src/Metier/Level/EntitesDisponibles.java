@@ -13,11 +13,7 @@ public class EntitesDisponibles extends Sujet{
     {
         this.liste = new ArrayList<>();
     }
-    
-    public EntitesDisponibles(ArrayList<Entite> liste)
-    {
-        this.liste = liste;
-    }
+
     public ArrayList<Entite> getEntites()
     {
         return this.liste;
