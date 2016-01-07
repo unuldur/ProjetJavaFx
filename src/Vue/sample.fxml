@@ -28,7 +28,7 @@
          <children>
             <Pane fx:id="PanetreeView" prefWidth="200.0" GridPane.rowIndex="0" />
             <Button onAction="#SuprimerEntiteTreeView" text="Supprimer" GridPane.rowIndex="1" />
-            <Button text="Modifier" GridPane.rowIndex="2" onAction="#modifierEntiter"/>
+            <Button text="Modifier" GridPane.rowIndex="2" onAction="#modifierEntiter" fx:id="closeButton"/>
          </children>
       </GridPane>
    </right>
@@ -45,7 +45,7 @@
                   </items>
               </Menu>
               <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="Close" onAction="#close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

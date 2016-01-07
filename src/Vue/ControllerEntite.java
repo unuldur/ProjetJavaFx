@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -34,6 +36,12 @@ public class ControllerEntite {
 
     @FXML
     Button path;
+
+    @FXML
+    Button buttonCancel;
+
+    @FXML
+    Button buttonOk;
 
     @FXML
     ComboBox<String> types;
@@ -103,6 +111,7 @@ public class ControllerEntite {
                 }
             }
             okClicked = true;
+
             dialogStage.close();
         }
     }

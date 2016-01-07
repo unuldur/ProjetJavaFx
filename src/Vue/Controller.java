@@ -18,12 +18,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +53,9 @@ public class Controller {
     BorderPane fenetre;
 
     @FXML
+    Button closeButton;
+
+    @FXML
     public void initialize()
     {
 
@@ -71,24 +76,29 @@ public class Controller {
         PaneAffichage.getChildren().add(levelCanvas);
         PanetreeView.getChildren().add(trl);
 
+        levelCanvas=initializeCanvas(levelCanvas);
+
+    }
+
+    private LevelCanvas initializeCanvas(LevelCanvas levelCanvas)
+    {
         levelCanvas.heightProperty().bind(PaneAffichage.heightProperty());
         levelCanvas.widthProperty().bind(PaneAffichage.widthProperty());
-        levelCanvas.setOnMousePressed(event-> {
-            if(event.isPrimaryButtonDown())
-                if(trl.getSelectionModel().getSelectedItem().isLeaf())
-                {
-                    String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
-                    String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-                    level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type,trl.getSelectionModel().getSelectedItem().getValue()
-                            , "Metier." + type + "." + cat,new Point2D(event.getX(),event.getY())),new Point2D(event.getX(),event.getY()));
+            levelCanvas.setOnMousePressed(event -> {
+                if (event.isPrimaryButtonDown())
+                    if (trl.getSelectionModel().getSelectedItem().isLeaf()) { //TODO : gérer NullPointerException
+                        String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
+                        String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
+                        level.addEntite(creat.createurEntiteComplete("Metier." + type + "." + type, trl.getSelectionModel().getSelectedItem().getValue()
+                                , "Metier." + type + "." + cat, new Point2D(event.getX(), event.getY())), new Point2D(event.getX(), event.getY()));
+                    }
+                if (event.isSecondaryButtonDown()) {
+                    level.delEntiteByPos(new Point2D(event.getX(), event.getY()));
                 }
-            if (event.isSecondaryButtonDown())
-            {
-                level.delEntiteByPos(new Point2D(event.getX(),event.getY()));
-            }
 
-        });
+            });
 
+        return levelCanvas;
     }
 
     @FXML
@@ -163,7 +173,7 @@ public class Controller {
         if (controllerEntite.isOkClicked() && !entitesDisponibles.findEntite(e)) {
             entitesDisponibles.addEntite(e);
         }
-        else System.out.println("erreur");
+        else System.out.println("Erreur lors de l'ajout. Avez-vous appuyé sur le bouton annuler?");
     }
 
     @FXML
@@ -182,5 +192,10 @@ public class Controller {
         }
     }
 
-
+    @FXML
+    public void close()
+    {
+        Window window = closeButton.getScene().getWindow();
+        window.hide();
+    }
 }

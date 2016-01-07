@@ -41,6 +41,7 @@ public class Main extends Application {
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
         ControllerEntite controllerAjout = loader.getController();
+        dialogStage.setResizable(false);
         controllerAjout.setDialogStage(dialogStage);
 
 

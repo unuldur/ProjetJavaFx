@@ -17,8 +17,16 @@ public class RuleMonstre extends RuleEntite {
         Entite TileDessous;
         if( !super.validerEntite(e,l)) return false;
         TileDessous = l.findEntite(e.getPosition(),"Tile");
-        if(TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol"))
+        if(TileDessous != null && TileDessous.getCategorie().getClass().getSimpleName().equals("Sol")) {
+            if(e.getCategorie().getCategorie() == "Boss")
+            {
+                for (Entite ent:l.getListEntite()) {
+                    if (ent.getCategorie().getCategorie() == "Boss")
+                        return false;
+                }
+            }
             return true;
+        }
         return false;
     }
 }

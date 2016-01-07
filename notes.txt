@@ -1,4 +1,4 @@
-Fait le 03/12 - 8h - Maxime
+﻿Fait le 03/12 - 8h - Maxime
 
 ->packages pour Monstre, Entite et Item
 ->creation d'itemVisuel, monstreVisuel et tileVisuel
@@ -33,3 +33,7 @@ Methode/Interface pour placement dans niveau :
     Interface IPlacementEntite : méthode de placement avec en paramètre la position
     3 classes : PlacementMonsttre, PlacementItem, PlacementTile, implémentant IPlacementEntite. PlacementMonstre -> vérif qu'il n'y a pas déja un boss, que 2 monstres ne se chevauchent pas. PlacementTile -> vérifie qu'il n'y a pas 2 portes, que 2 items ne se chevauchent pas. PlacementItem -> vérifie que 2 items ne se chevauchent pas
     Classe Context : A un attribut IPlacementEntite, une méthode pour appeler la méthode de la stratégie
+
+27/12 - 14h - Maxime
+
+    Vacances o/

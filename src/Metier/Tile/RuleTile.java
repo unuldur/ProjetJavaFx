@@ -13,6 +13,14 @@ public class RuleTile extends RuleEntite {
 
     @Override
     public boolean validerEntite(Entite e, Level l) {
-        return super.validerEntite(e,l);
+        if(!super.validerEntite(e,l)) return false;
+        if(e.getCategorie().getCategorie()=="Porte")
+        {
+            for (Entite ent:l.getListEntite()) {
+                if (ent.getCategorie().getCategorie() == "Porte")
+                    return false;
+            }
+        }
+        return true;
     }
 }
