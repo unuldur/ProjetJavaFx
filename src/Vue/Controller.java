@@ -89,7 +89,9 @@ public class Controller {
             if (event.isPrimaryButtonDown())
                 ajoutEntite(event.getX(),event.getY());
             if (event.isSecondaryButtonDown()) {
-                save.doCom(new CommandeSupprimer(level,level.getEntiteByPos(new Point2D(event.getX(),event.getY()))));
+                Entite e =level.getEntiteByPos(new Point2D(event.getX(),event.getY()));
+                if(e != null)
+                    save.doCom(new CommandeSupprimer(level,level.getEntiteByPos(new Point2D(event.getX(),event.getY()))));
             }
 
         });
@@ -102,8 +104,10 @@ public class Controller {
         if (trl.getSelectionModel().getSelectedItem().isLeaf()) { //TODO : gérer NullPointerException
             String cat = trl.getSelectionModel().getSelectedItem().getParent().getValue();
             String type = trl.getSelectionModel().getSelectedItem().getParent().getParent().getValue();
-            save.doCom(new CommandePlacer(level,creat.createurEntiteComplete("Metier." + type + "." + type, trl.getSelectionModel().getSelectedItem().getValue()
-                    , "Metier." + type + "." + cat, new Point2D(x, y))));
+            Entite e  = creat.createurEntiteComplete("Metier." + type + "." + type, trl.getSelectionModel().getSelectedItem().getValue()
+                    , "Metier." + type + "." + cat, new Point2D(x, y));
+            if(level.isOk(e))
+                save.doCom(new CommandePlacer(level,e));
         }
     }
 
